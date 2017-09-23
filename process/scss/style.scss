@@ -1,0 +1,294 @@
+/*----------------------
+  TABLE OF CSS CONTENT
+------------------------
+	[*] Reset
+  [1] Variables
+  [2] Mixin
+  [3] Global style
+  [4] Container
+  [5] Menu
+  [6] Boxs
+  [*] Media query
+*/
+
+/* ------------------
+[*] Reset
+-------------------*/
+@import url('reset.css');
+
+/* ------------------
+[1] Variables
+-------------------*/
+$grey: #aab7b7;
+$light-grey: #fbfbfb;
+$deep-grey: #696f6f;
+$flat-red: #ec7777;
+$border: solid 1px #333;
+$marginAuto: 0 auto;
+$padding10: 10px;
+$displayInline: inline;
+
+/* ------------------
+[2] Mixin
+-------------------*/
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+@mixin transition-delay($delay) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+/* ------------------
+[3] Global style
+-------------------*/
+/*html { direction: rtl; }*/
+body{
+  background-color: $light-grey;
+  font-size: 100%;
+  font-family: "Open Sans";
+  font-family: "Raleway";
+}
+
+
+/* ------------------
+[4] Container
+-------------------*/
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* ------------------
+[5] Menu
+-------------------*/
+nav {
+  background-color:$grey;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+
+  #nav{ display:none; }
+
+  ul{
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+
+    li{
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center;
+      border-right: solid 1px $light-grey;
+
+      &:last-of-type { border: none; }
+
+      a{
+        text-decoration: none;
+        display: block;
+        line-height: 50px;
+        color: $deep-grey;
+        font-size: 1.2em;
+        /*font-size: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;*/
+
+        &:before {
+          content: attr(data-hover);
+          color: #fff;
+          position: absolute;
+          opacity: 0;
+          /*@include transform( scale(1.1) translateX(10px) translateY(-10px) rotate(4deg));*/
+          @include transform( scale(1.5));
+          @include transition( transform 0.3s, opacity 0.3s);
+          pointer-events: none;
+        }
+
+        &:hover::before {
+          /*@include transform( scale(1) translateX(0px) translateY(0px) rotate(0deg));*/
+          @include transform( scale(1) );
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+.space { height: 50px; width: 100%; }
+
+/* ------------------
+[6] Images container
+-------------------*/
+section.Images-container {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 1080px;
+
+    .medium-3 {
+      display: inline-block;
+      width: 33%;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+
+      a {
+        display: inline-block;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        text-decoration: none;
+
+          div {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            top: 45%;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0px 2px 4px #000000;
+            opacity: 0;
+            @include transition( all 0.2s ease-in-out);
+            @include transform( scale(2));
+            @include transition-delay(0.2s)
+          }
+
+          &:hover div{
+            opacity:1;
+            @include transform( scale(1) );
+          }
+
+          &:before{
+              content: '';
+              position: absolute;
+              display: block;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              z-index: 1;
+              @include transition( all 0.35s ease-in-out);
+          }
+
+          &:hover::before {
+              box-shadow: inset 0 0 0 110px #333333, inset 0 0 0 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+              box-shadow: inset 0 0 0 110px rgba(0, 0, 0, 0.5), inset 0 0 70px 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1);
+          }
+
+        img {
+          width: auto;
+          height: 100%;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          -webkit-transform: translateY(-50%) translateX(-50%);
+        }
+    }
+  }
+}
+/* ------------------
+[*] Media query
+-------------------*/
+
+@media only screen and (max-width: 667px) and (min-width: 320px)  { /*(min-width: 375px)*/
+
+  /* ------------------
+  [5] Menu
+  -------------------*/
+  nav {
+    height: 50px;
+    border-bottom: 1px white solid;
+
+    .mobile-btn {
+        width: 50px;
+        display: inline-block;
+        cursor: pointer;
+        margin: 1px 0 0 20px;
+
+        .line {
+          width: 50px;
+          height: 5px;
+          background-color: #ecf0f1;
+          display: block;
+          margin: 8px auto;
+          @include transition( all 0.4s ease-in-out );
+        }
+    }
+
+    #nav{
+      &:checked{
+        &~ ul{
+              pointer-events: auto;
+
+              li{
+                left: 0;
+                opacity: 1;
+              }
+        }
+
+        &~.mobile-btn .line:nth-child(1){
+          opacity: 0;
+          @include transform( translateX(-100%));
+        }
+        &~.mobile-btn .line:nth-child(3) {
+          opacity: 0;
+          @include transform( translateX(100%));
+        }
+      }
+    }
+
+    ul {
+      display:initial;
+      pointer-events: none;
+
+      li {
+        border-right: none;
+        border-bottom: solid 1px $light-grey;
+        position: relative;
+        background-color: $grey;
+        @include transition( all 0.4s ease-in-out );
+
+        &:nth-child(odd) {
+          left: 100%;
+          opacity: 0.2;
+        }
+
+        &:nth-child(even) {
+          left: -100%;
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+
+  /* ------------------
+  [6] Images container
+  -------------------*/
+  section.Images-container .medium-3 { width: 48%; }
+
+
+}
+
+@media screen and (max-width: 480px) {
+  /* ------------------
+  [6] Images container
+  -------------------*/
+  section.Images-container .small-1 { width: 100%; }
+
+}

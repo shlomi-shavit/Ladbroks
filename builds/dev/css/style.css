@@ -1,0 +1,96 @@
+/*----------------------
+  TABLE OF CSS CONTENT
+------------------------
+	[*] Reset
+  [1] Variables
+  [2] Mixin
+  [3] Global style
+  [4] Container
+  [5] Menu
+  [6] Boxs
+  [*] Media query
+*/
+/* ------------------
+[*] Reset
+-------------------*/
+@import url("reset.css");
+/* ------------------
+[1] Variables
+-------------------*/
+/* ------------------
+[2] Mixin
+-------------------*/
+/* ------------------
+[3] Global style
+-------------------*/
+/*html { direction: rtl; }*/
+body { background-color: #fbfbfb; font-size: 100%; font-family: "Open Sans"; font-family: "Raleway"; }
+
+/* ------------------
+[4] Container
+-------------------*/
+.container { max-width: 1920px; margin: 0 auto; }
+
+/* ------------------
+[5] Menu
+-------------------*/
+nav { background-color: #aab7b7; position: fixed; width: 100%; z-index: 2; }
+
+nav #nav { display: none; }
+
+nav ul { width: 100%; display: -webkit-flex; display: flex; }
+
+nav ul li { -webkit-flex: 1; -ms-flex: 1; flex: 1; text-align: center; border-right: solid 1px #fbfbfb; }
+
+nav ul li:last-of-type { border: none; }
+
+nav ul li a { text-decoration: none; display: block; line-height: 50px; color: #696f6f; font-size: 1.2em; /*font-size: 1em; text-transform: uppercase; letter-spacing: 0.5px;*/ }
+
+nav ul li a:before { content: attr(data-hover); color: #fff; position: absolute; opacity: 0; /*@include transform( scale(1.1) translateX(10px) translateY(-10px) rotate(4deg));*/ -moz-transform: scale(1.5); -o-transform: scale(1.5); -ms-transform: scale(1.5); -webkit-transform: scale(1.5); transform: scale(1.5); -moz-transition: transform 0.3s, opacity 0.3s; -o-transition: transform 0.3s, opacity 0.3s; -webkit-transition: transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; pointer-events: none; }
+
+nav ul li a:hover::before { /*@include transform( scale(1) translateX(0px) translateY(0px) rotate(0deg));*/ -moz-transform: scale(1); -o-transform: scale(1); -ms-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
+
+.space { height: 50px; width: 100%; }
+
+/* ------------------
+[6] Images container
+-------------------*/
+section.Images-container { text-align: center; margin: 50px auto; max-width: 1080px; }
+
+section.Images-container .medium-3 { display: inline-block; width: 33%; box-sizing: border-box; margin-bottom: 20px; }
+
+section.Images-container .medium-3 a { display: inline-block; position: relative; width: 200px; height: 200px; overflow: hidden; border-radius: 50%; text-decoration: none; }
+
+section.Images-container .medium-3 a div { position: relative; z-index: 1; color: #fff; top: 45%; font-weight: bold; font-size: 20px; text-shadow: 0px 2px 4px #000000; opacity: 0; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; -moz-transform: scale(2); -o-transform: scale(2); -ms-transform: scale(2); -webkit-transform: scale(2); transform: scale(2); -moz-transition-delay: 0.2s; -o-transition-delay: 0.2s; -webkit-transition-delay: 0.2s; transition-delay: 0.2s; }
+
+section.Images-container .medium-3 a:hover div { opacity: 1; -moz-transform: scale(1); -o-transform: scale(1); -ms-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); }
+
+section.Images-container .medium-3 a:before { content: ''; position: absolute; display: block; width: 100%; height: 100%; border-radius: 50%; z-index: 1; -moz-transition: all 0.35s ease-in-out; -o-transition: all 0.35s ease-in-out; -webkit-transition: all 0.35s ease-in-out; transition: all 0.35s ease-in-out; }
+
+section.Images-container .medium-3 a:hover::before { box-shadow: inset 0 0 0 110px #333333, inset 0 0 0 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: inset 0 0 0 110px rgba(0, 0, 0, 0.5), inset 0 0 70px 16px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0, 0, 0, 0.1); }
+
+section.Images-container .medium-3 a img { width: auto; height: 100%; position: absolute; left: 50%; top: 50%; -webkit-transform: translateY(-50%) translateX(-50%); }
+
+/* ------------------
+[*] Media query
+-------------------*/
+@media only screen and (max-width: 667px) and (min-width: 320px) { /*(min-width: 375px)*/
+  /* ------------------ [5] Menu -------------------*/
+  nav { height: 50px; border-bottom: 1px white solid; }
+  nav .mobile-btn { width: 50px; display: inline-block; cursor: pointer; margin: 1px 0 0 20px; }
+  nav .mobile-btn .line { width: 50px; height: 5px; background-color: #ecf0f1; display: block; margin: 8px auto; -moz-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; }
+  nav #nav:checked ~ ul { pointer-events: auto; }
+  nav #nav:checked ~ ul li { left: 0; opacity: 1; }
+  nav #nav:checked ~ .mobile-btn .line:nth-child(1) { opacity: 0; -moz-transform: translateX(-100%); -o-transform: translateX(-100%); -ms-transform: translateX(-100%); -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+  nav #nav:checked ~ .mobile-btn .line:nth-child(3) { opacity: 0; -moz-transform: translateX(100%); -o-transform: translateX(100%); -ms-transform: translateX(100%); -webkit-transform: translateX(100%); transform: translateX(100%); }
+  nav ul { display: initial; pointer-events: none; }
+  nav ul li { border-right: none; border-bottom: solid 1px #fbfbfb; position: relative; background-color: #aab7b7; -moz-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; -webkit-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; }
+  nav ul li:nth-child(odd) { left: 100%; opacity: 0.2; }
+  nav ul li:nth-child(even) { left: -100%; opacity: 0.2; }
+  /* ------------------ [6] Images container -------------------*/
+  section.Images-container .medium-3 { width: 48%; } }
+
+@media screen and (max-width: 480px) { /* ------------------ [6] Images container -------------------*/
+  section.Images-container .small-1 { width: 100%; } }
+
+/*# sourceMappingURL=style.css.map */
