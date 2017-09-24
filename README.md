@@ -7,14 +7,13 @@
 3.1) Type "npm start" ( Will run the project on local server )
 
 3.2) #Development or Production enviroment:
-package.json:
-
-"scripts": {
+package.json:<br />
+"scripts": {<br />
 // For development mode use "dev:*" and then enter "npm start" on terminal.
-Dev mode: "start": "npm-run-all --parallel dev:*"
+Dev mode: "start": "npm-run-all --parallel dev:*" <br />
 // For production mode use "prod:*" and then enter "npm start" on terminal.
 Live mode: "start": "npm-run-all --parallel prod:*"
-}
+}<br />
 
 4) Type "npm run build" to minify html.
 5) Type "npm run prod:img-compress" to compress al images.
