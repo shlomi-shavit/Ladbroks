@@ -4,7 +4,7 @@
 2) Type `npm install` ( Wait for node_modules folder to be fully installed ).
 3) Type `npm start` ( Will run the project on local server )
 # More details:
-4)Development or Production enviroment:
+4)Development or Production enviroment: <br />
 package.json: <br />
 "scripts": { <br />
 // For development mode type `dev:*` and then enter `npm start` on terminal.
