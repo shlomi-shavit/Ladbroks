@@ -265,12 +265,12 @@ section.Images-container {
         @include transition( all 0.4s ease-in-out );
 
         &:nth-child(odd) {
-          left: 100%;
+          left: -100%;
           opacity: 0.2;
         }
 
         &:nth-child(even) {
-          left: -100%;
+          left: 100%;
           opacity: 0.2;
         }
       }
