@@ -12,6 +12,6 @@ package.json: <br />
 // For production mode use `prod:*` and then enter `npm start` on terminal.
 `npm-run-all --parallel prod:*` <br />
 } <br />
-5) Type "npm run build" to minify html.
-6) Type "npm run prod:img-compress" to compress al images.
-7) Type "npm run prod:js-uglify" to minify js file.
+5) Type `npm run build` to minify html.
+6) Type `npm run prod:img-compress` to compress al images.
+7) Type `npm run prod:js-uglify` to minify js file.
